@@ -11,5 +11,29 @@ Output: "Jasmine%20Ann%20Jones"
 
 Without Recursion:
 
+        function replaceSpaces(string) {
+            let urlString = " ";
+            for (let i=0; i < input.length; i++) {
+                if (input[i] === " ") {
+                    result += "%20";
+                } else {
+                    result += input[i];
+                }
+            }
+            return urlString;
+        }
+
 
 With Recursion:
+
+        function replaceSpacesRecursive(string) {
+            if (string.length === 0) {
+                return " ";
+            }
+
+            if (string[0] === " ") {
+                return "%20" + replaceSpacesRecursive(string.slice(1));
+            } else {
+                return string[0] + replaceSpacesRecursive(string.slice(1));
+            }
+        }
