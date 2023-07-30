@@ -13,5 +13,34 @@ Output: true
 
 Without Recursion:
 
+    function areAllCharactersUnique(string) {
+        let seenChars = new Set();
+
+        for (const char of string) {
+            if (seenChars.has(char)) {
+                return false;
+            }
+            seenChars.add(char);
+         }
+
+        return true;
+    }
+
 
 With Recursion:
+
+    function areAllCharactersUnique(string, index = 0, seenChars = new Set()) {
+        if (index === string.length) {
+            return true;
+        }
+
+        const char = string[index];
+
+        if (seenChars.has(char)) {
+            return false;
+        }
+
+        seenChars.add(char);
+
+        return areAllCharactersUnique(string, index + 1, seenChars);
+    }
